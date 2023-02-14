@@ -16,6 +16,11 @@ const todosSlice = createSlice({
       ...state,
       action.payload,
     ],
+    toggleIsDone: (state, action: PayloadAction<TodoStructure>) =>
+      state.map((todo) => ({
+        ...todo,
+        isDone: todo.id === action.payload.id ? !todo.isDone : todo.isDone,
+      })),
   },
 });
 
@@ -23,6 +28,7 @@ export const {
   loadTodos,
   deleteTodo: deleteTodoActionCreator,
   createTodo: createTodoActionCreator,
+  toggleIsDone: toggleIsDoneActionCreator,
 } = todosSlice.actions;
 
 export default todosSlice;

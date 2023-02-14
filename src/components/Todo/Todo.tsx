@@ -6,13 +6,14 @@ interface TodoProps {
   todo: TodoStructure;
 }
 
-const Todo = ({ todo: { name, isDone, id } }: TodoProps): JSX.Element => {
-  const { deleteTodo } = useApi();
+const Todo = ({ todo }: TodoProps): JSX.Element => {
+  const { deleteTodo, toggleIsDone } = useApi();
 
   return (
     <article>
-      <h3>{name}</h3>
-      <button onClick={() => deleteTodo(id)}>Delete</button>
+      <h3>{todo.name}</h3>
+      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <input type="checkbox" onClick={() => toggleIsDone(todo)} />
     </article>
   );
 };
