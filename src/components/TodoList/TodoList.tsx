@@ -1,5 +1,6 @@
 import React from "react";
 import { TodosStructure } from "../../data/types";
+import Todo from "../Todo/Todo";
 interface TodosListProps {
   todos: TodosStructure;
 }
@@ -8,10 +9,7 @@ const TodoList = ({ todos }: TodosListProps): JSX.Element => {
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <article>
-            <h3>{todo.name}</h3>
-            <span>IsDone? : {todo.isDone}</span>
-          </article>
+          <Todo todo={todo} />
         </li>
       ))}
     </ul>
