@@ -4,6 +4,7 @@ import { useAppDispatch } from "../store/hooks";
 import todosSlice, {
   createTodoActionCreator,
   deleteTodoActionCreator,
+  toggleIsDoneActionCreator,
 } from "../store/slices/TodosSlice";
 
 const useApi = () => {
@@ -41,7 +42,31 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { loadTodos, deleteTodo, createTodo };
+  const toggleIsDone = useCallback(
+    async (todo: TodoStructure) => {
+      const response = await fetch(
+        `https://todo-list-redux-ts.onrender.com/todos/${todo.id}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
+            ...todo,
+            isDone: !todo.isDone,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      );
+      if (!response.ok) {
+        return;
+      }
+
+      dispatch(toggleIsDoneActionCreator(todo));
+    },
+    [dispatch]
+  );
+
+  return { loadTodos, deleteTodo, createTodo, toggleIsDone };
 };
 
 export default useApi;
