@@ -3,6 +3,7 @@ import Form from "./components/Form/Form";
 import TodoList from "./components/TodoList/TodoList";
 import useApi from "./hooks/useApi";
 import { useAppSelector } from "./store/hooks";
+import "./App.css";
 
 export const App = (): JSX.Element => {
   const { loadTodos } = useApi();
@@ -16,9 +17,11 @@ export const App = (): JSX.Element => {
 
   return (
     <>
-      <h1>Todo RTk</h1>
-      <TodoList todos={todos} />
-      <Form />
+      <div className="container">
+        <h1>Todo RTk</h1>
+        <TodoList todos={todos} />
+        <Form />
+      </div>
     </>
   );
 };
