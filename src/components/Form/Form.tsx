@@ -1,16 +1,29 @@
 import React, { useState } from "react";
+import useApi from "../../hooks/useApi";
 
-const Form = () => {
-  const [todos, setTodos] = useState([]);
+const Form = (): JSX.Element => {
+  const { createTodo } = useApi();
+  const [todo, setTodo] = useState("");
 
   const handleChange = (event: any) => {
-    setTodos(event.target.value);
+    setTodo(event.target.value);
   };
+
+  const handleSubmit = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    const newTodo = {
+      id: Math.floor(Math.random() * 1000),
+      name: todo,
+      isDone: false,
+    };
+    createTodo(newTodo);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="name">
-          <input type="text" onChange={handleChange} value={todos} />
+          <input type="text" onChange={handleChange} value={todo} />
         </label>
       </div>
       <button>Add Task</button>

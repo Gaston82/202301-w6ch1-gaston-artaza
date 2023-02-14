@@ -1,7 +1,8 @@
 import { useCallback } from "react";
-import { TodosStructure } from "../data/types";
+import { TodosStructure, TodoStructure } from "../data/types";
 import { useAppDispatch } from "../store/hooks";
 import todosSlice, {
+  createTodoActionCreator,
   deleteTodoActionCreator,
 } from "../store/slices/TodosSlice";
 
@@ -25,7 +26,22 @@ const useApi = () => {
     [dispatch]
   );
 
-  return { loadTodos, deleteTodo };
+  const createTodo = useCallback(
+    async (todo: TodoStructure) => {
+      fetch("https://todo-list-redux-ts.onrender.com/todos", {
+        method: "POST",
+        body: JSON.stringify(todo),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+      dispatch(createTodoActionCreator(todo));
+    },
+    [dispatch]
+  );
+
+  return { loadTodos, deleteTodo, createTodo };
 };
 
 export default useApi;
