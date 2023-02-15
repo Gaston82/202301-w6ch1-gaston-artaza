@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import useApi from "../../hooks/useApi";
+import "./Form.css";
 
 const Form = (): JSX.Element => {
   const { createTodo } = useApi();
   const [todo, setTodo] = useState("");
 
-  const handleChange = (event: any) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     setTodo(event.target.value);
   };
 
-  const handleSubmit = (event: { preventDefault: () => void }) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
@@ -26,6 +29,7 @@ const Form = (): JSX.Element => {
           <input type="text" onChange={handleChange} value={todo} />
         </label>
       </div>
+
       <button>Add Task</button>
     </form>
   );
