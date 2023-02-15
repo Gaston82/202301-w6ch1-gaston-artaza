@@ -19,8 +19,8 @@ export const App = (): JSX.Element => {
     <>
       <div className="container">
         <h1>Todo RTk</h1>
-        <TodoList todos={todos} />
         <Form />
+        <TodoList todos={todos} />
       </div>
     </>
   );
