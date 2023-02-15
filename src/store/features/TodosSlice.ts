@@ -25,10 +25,12 @@ const todosSlice = createSlice({
 });
 
 export const {
-  loadTodos,
+  loadTodos: loadTodosActionCreator,
   deleteTodo: deleteTodoActionCreator,
   createTodo: createTodoActionCreator,
   toggleIsDone: toggleIsDoneActionCreator,
 } = todosSlice.actions;
 
-export default todosSlice;
+const todosReducer = todosSlice.reducer;
+
+export default todosReducer;
