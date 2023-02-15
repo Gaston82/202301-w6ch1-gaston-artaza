@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoStructure } from "../../data/types";
+import { TodoStructure } from "../../types";
 import useApi from "../../hooks/useApi";
 import "./Todo.css";
 

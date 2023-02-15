@@ -1,4 +1,4 @@
-import { TodosStructure } from "../../data/types";
+import { TodosStructure } from "../../../types";
 import todosReducer, { createTodoActionCreator } from "./TodosSlice";
 
 describe("Given a todosReducer  function", () => {

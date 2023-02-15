@@ -1,5 +1,5 @@
 import React from "react";
-import { TodosStructure } from "../../data/types";
+import { TodosStructure } from "../../types";
 import Todo from "../Todo/Todo";
 interface TodosListProps {
   todos: TodosStructure;
