@@ -1,5 +1,8 @@
 import { TodosStructure } from "../../../types";
-import todosReducer, { createTodoActionCreator } from "./TodosSlice";
+import todosReducer, {
+  createTodoActionCreator,
+  deleteTodoActionCreator,
+} from "./TodosSlice";
 
 describe("Given a todosReducer  function", () => {
   describe("When it recieves a new Task '", () => {
@@ -28,6 +31,29 @@ describe("Given a todosReducer  function", () => {
         createTodoActionCreator(newTask)
       );
       expect(newTodosList).toHaveLength(3);
+    });
+  });
+
+  describe("When it recieves a list of task and task with id 2", () => {
+    test("Then it should return a new task list with only one task", () => {
+      const initialState = [
+        {
+          id: 500,
+          name: "Make a cake",
+          isDone: false,
+        },
+        {
+          id: 2,
+          name: "Have a bath",
+          isDone: true,
+        },
+      ];
+
+      const newTasksList = todosReducer(
+        initialState,
+        deleteTodoActionCreator(2)
+      );
+      expect(newTasksList).toHaveLength(1);
     });
   });
 });
