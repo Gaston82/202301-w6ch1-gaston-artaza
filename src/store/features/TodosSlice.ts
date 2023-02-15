@@ -25,7 +25,7 @@ const todosSlice = createSlice({
 });
 
 export const {
-  loadTodos,
+  loadTodos: loadTodosActionCreator,
   deleteTodo: deleteTodoActionCreator,
   createTodo: createTodoActionCreator,
   toggleIsDone: toggleIsDoneActionCreator,
