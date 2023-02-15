@@ -5,7 +5,7 @@ import todosSlice, {
   createTodoActionCreator,
   deleteTodoActionCreator,
   toggleIsDoneActionCreator,
-} from "../store/slices/TodosSlice";
+} from "../store/features/TodosSlice";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
