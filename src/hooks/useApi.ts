@@ -1,12 +1,12 @@
 import { useCallback } from "react";
-import { TodosStructure, TodoStructure } from "../data/types";
+import { TodosStructure, TodoStructure } from "../types";
 import { useAppDispatch } from "../store/hooks";
 import {
   createTodoActionCreator,
   deleteTodoActionCreator,
   loadTodosActionCreator,
   toggleIsDoneActionCreator,
-} from "../store/features/TodosSlice";
+} from "../store/features/todosSlice/TodosSlice";
 
 const useApi = () => {
   const dispatch = useAppDispatch();
