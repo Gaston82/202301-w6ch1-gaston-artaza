@@ -31,4 +31,6 @@ export const {
   toggleIsDone: toggleIsDoneActionCreator,
 } = todosSlice.actions;
 
-export const todosReducer = todosSlice.reducer;
+const todosReducer = todosSlice.reducer;
+
+export default todosReducer;

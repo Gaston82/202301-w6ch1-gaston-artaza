@@ -1,5 +1,5 @@
 import { TodosStructure } from "../../data/types";
-import { createTodoActionCreator, todosReducer } from "./TodosSlice";
+import todosReducer, { createTodoActionCreator } from "./TodosSlice";
 
 describe("Given a todosReducer  function", () => {
   describe("When it recieves a new Task '", () => {
